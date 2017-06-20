@@ -1,25 +1,25 @@
-import Home         from './vues/home.vue'
-import workshopIdea from './vues/workshopIdea.vue'
-import Contact      from './vues/contact.vue'
-import NotFound     from './vues/notFound.vue'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter);
 
-const routes = {
-    '/': Home,
-    '/workshopIdea': workshopIdea,
-    '/contact': Contact
-};
+import Home               from './vues/home.vue'
+import workshopIdea       from './vues/workshopIdea.vue'
+import scheduledWorkshops from './vues/scheduledWorkshops.vue'
+import demosApi           from './vues/demosApi.vue'
+import Contact            from './vues/contact.vue'
+import app                from './vues/appSkeleton.vue'
 
-export const Router = {
-    data: () => ({
-        currentRoute: window.location.pathname
-    }),
-    computed: {
-        viewComponent() {
-            return routes[this.currentRoute] || NotFound
-        }
-    },
-    render (h){
-        return h(this.viewComponent)
-    }
 
-};
+const routes = [
+    {path: '/',     component:  Home },
+    {path: '/app',  component:  app, children: [
+        { path:'scheduledWorkshops', component: scheduledWorkshops},
+        { path:'workshopIdea',       component: workshopIdea},
+        { path:'demosApi',           component: demosApi},
+        { path:'Contact',            component: Contact},
+    ] },
+];
+
+export const router = new VueRouter({
+    routes: routes
+});

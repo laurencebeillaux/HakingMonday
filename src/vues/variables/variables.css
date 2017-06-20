@@ -1,0 +1,15 @@
+:root {
+    --widthContent: 100%;
+    --heightContent: 300px;
+    --iconWidth: 60px;
+    --widthTitle: 330px;
+    --lightGrey: #B7B7B7;
+    --blueGrey: #e3e7f5;
+    --darkGrey: #3D3D3D;
+    --orange: #EE6534;
+
+    --headerHeight : 80px;
+
+    --smalliconWidth: 39px;
+    --addressHeight: 51px;
+}

@@ -31,7 +31,6 @@
         },
 
         mounted() {
-
             listServices.fetchUrl().then((result) => {
                 this.board = result;
                 this.lists = result.lists.map(list => {
@@ -51,9 +50,5 @@
 </script>
 
 <style scoped>
-    div {
-        display: block;
-        width: 100%;
-        background-color: cadetblue;
-    }
+
 </style>

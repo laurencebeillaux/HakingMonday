@@ -4,11 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "poi",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "vue": "^2.3.4"
+    "poi": "^9.0.2",
+    "postcss": "^6.0.2",
+    "postcss-cssnext": "^2.11.0",
+    "postcss-import": "^10.0.0",
+    "vue": "^2.3.4",
+    "vue-router": "^2.5.3"
   }
 }

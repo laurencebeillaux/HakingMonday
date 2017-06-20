@@ -1,0 +1,6 @@
+@import "./src/vues/variables/variables.css";
+
+body{
+    margin: 0;
+    background-color: var(--blueGrey);
+}

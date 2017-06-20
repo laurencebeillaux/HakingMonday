@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import {Router} from './src/router.js'
-import Navigation from './src/navigation.vue'
+import {router} from './src/router.js'
+import "./globale.css"
 
 /**
  * Auto import of components
@@ -17,12 +17,11 @@ requireComponent.keys().map(key => {
 
 new Vue({
     el: '#app',
+    router,
     render() {
         return (
             <div>
-                <Navigation></Navigation>
-                <h1>Haking Monday</h1>
-                <Router></Router>
+                <router-view/>
             </div>
         )
     }

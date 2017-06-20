@@ -1,5 +1,5 @@
 <template>
-    <p>Not Found</p>
+    <p>AHHHAHAHHHA tu tes fais eu...</p>
 </template>
 
 <script>
