@@ -1,6 +1,6 @@
 <template>
-    <div class="boardsContainer">
-        <simple-board :idList="idList" ></simple-board>
+    <div class="scheduledWorkshopsContainer">
+        <simple-board :idList="idList" class="scheduledWorkshops" ></simple-board>
     </div>
 </template>
 
@@ -20,7 +20,4 @@
 </script>
 
 <style scoped>
-    .boardsContainer {
-        background-color: var(--blueGrey);
-    }
 </style>

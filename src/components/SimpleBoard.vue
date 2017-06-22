@@ -1,9 +1,12 @@
 <template>
-    <div>
+    <div id="boardsContainer">
         <div v-for="list in filterId">
-            {{list.name}}
-            <ul v-for="card in list.cards" >
-                <li>{{card.name}}</li>
+            <h1 class="titleBoard">{{list.name}}</h1>
+            <ul class="listBoard">
+                <slot name="card"
+                      v-for="card in list.cards"
+                      :card="card">
+                </slot>
             </ul>
         </div>
     </div>
@@ -15,7 +18,9 @@
 
 
     export default {
-        props: ['idList'],
+        props: [
+            'idList'
+        ],
         data() {
             return {
                 board: {},
@@ -24,7 +29,7 @@
         },
         computed: {
             filterId(){
-                return this.lists.filter((list)=>{
+                return this.lists.filter((list)=> {
                     return list.id == this.idList
                 })
             }
@@ -50,5 +55,30 @@
 </script>
 
 <style scoped>
+    #boardsContainer{
+        width: 95%;
+        margin: 0 auto;
+    }
+    .titleBoard {
+        color: var(--darkGrey);
+        font-weight: 500;
+        font-size: 1.2em;
+    }
 
+    .workshopIdea .listBoard {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    /*hover on workshopIdeo */
+
+    /*.workshopIdea .listBoard li.elementListBoard:hover{*/
+        /*background-color: var(--orange) ;*/
+
+    /*}*/
 </style>

@@ -28,6 +28,8 @@
     }
 </script>
 <style scoped>
+    @import "../vues/variables/variables.css";
+
     header {
         position: absolute;
         width: 100%;
@@ -76,6 +78,7 @@
 
     #contentId{
         flex: 1;
+        background-color: var(--blueGrey);
     }
     @media (min-width: 960px) {
         header > h1 {
