@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div id="home">
         <div class="welcome">
             <div class="centeredContent">
                 <h1><img src='../images/logo.png' alt="logo Hacking Mondays"/></h1>
@@ -10,17 +10,17 @@
                     <router-link to="/app/scheduledWorkshops">Acceder au site</router-link>
                 </button>
             </div>
-            <div class="mouse">
-                <img src='../images/icon_mouse.png' alt="mouse"/>
+            <div class="mouse" @click="goTo('sectionPresentation')">
+                <img src='../images/icon_mouse.png' alt="go down"/>
                 <p>SCROLL</p>
             </div>
         </div>
-        <section class="presentation">
+        <section class="presentation" id="sectionPresentation">
             <article>
                     <span>
-                        <hr/>
+                        <hr class="halfLine"/>
                         <img src='../images/icons_objectives.png' alt="objectifs"/>
-                        <hr/>
+                        <hr class="halfLine"/>
                     </span>
                 <div class="objectives">
                     <h2>Objectifs</h2>
@@ -35,9 +35,9 @@
             </article>
             <article>
                     <span>
-                        <hr/>
+                        <hr class="halfLine"/>
                         <img src='../images/icon_actions.png' alt="actions"/>
-                        <hr/>
+                        <hr class="halfLine"/>
                     </span>
                 <div class="actions">
                     <h2>Actions</h2>
@@ -51,31 +51,60 @@
             </article>
             <article>
                     <span>
-                        <hr/>
+                        <hr class="halfLine"/>
                         <img src='../images/icon_participate.png' alt="participation"/>
-                        <hr/>
+                        <hr class="halfLine"/>
                     </span>
                 <div class="participate">
                     <h2>Participer</h2>
                     <p>Les sessions sont gratuites et ouvertes à tous. Afin d'en faciliter l'organisation, il suffit de
-                        s'inscrire sur le site eventbrite.fr</p>
+                        s'inscrire sur le site
+                        <a href="https://www.eventbrite.fr/e/billets-hacking-monday-18244313232" target="_blank"
+                           class="colorLink">eventbrite.fr</a>
+                    </p>
                 </div>
             </article>
+            <div class="arrowTopContainer">
+                <img @click="goTo('home')" src="../images/arrow_up.png" alt="go top"/>
+            </div>
         </section>
         <footer>
-            <p>pppppp</p>
+            <p>Copyright</p>
         </footer>
     </div>
 </template>
 <script>
-    export default {}
+    export default {
+        methods: {
+            go(element, to, duration) {
+                if (duration <= 0) return;
+                var difference = to - element.scrollTop;
+                var perTick = difference / duration * 10;
+
+                setTimeout(() => {
+                    element.scrollTop = element.scrollTop + perTick;
+                    if (element.scrollTop === to) return;
+                    this.go(element, to, duration - 10);
+                }, 8);
+            },
+
+            goTo(id) {
+                var element = document.getElementById(id);
+                this.go(document.body, element.offsetTop, 500);
+
+            }
+        }
+
+    }
 </script>
 <style>
     @import "./variables/variables.css";
-    body{
+
+    body {
         margin: 0;
     }
-    .home .welcome {
+
+    #home .welcome {
         position: relative;
         display: block;
         height: 100vh;
@@ -84,7 +113,8 @@
         background-position: center center;
         background-repeat: no-repeat;
     }
-    .home .welcome .centeredContent {
+
+    #home .welcome .centeredContent {
         position: absolute;
         height: var(--heightContent);
         margin-left: calc((var(--widthContent)) / (-2));
@@ -94,17 +124,17 @@
         left: 50%;
     }
 
-    .home .welcome .centeredContent h1 {
+    #home .welcome .centeredContent h1 {
         max-width: var(--widthTitle);
         width: 80%;
         margin: 0 auto;
     }
 
-    .home .welcome .centeredContent h1 img {
+    #home .welcome .centeredContent h1 img {
         max-width: 100%;
     }
 
-    .home .welcome .centeredContent p {
+    #home .welcome .centeredContent p {
         color: var(--lightGrey);
         text-align: center;
         margin: 1.5em auto;
@@ -112,7 +142,7 @@
         max-width: 800px;
     }
 
-    .home .welcome .centeredContent button {
+    #home .welcome .centeredContent button {
         width: 250px;
         height: 50px;
         display: block;
@@ -122,7 +152,7 @@
         padding: 0;
     }
 
-    .home .welcome .centeredContent button a {
+    #home .welcome .centeredContent button a {
         display: block;
         padding: 1.2em;
         text-decoration: none;
@@ -131,57 +161,62 @@
         font-size: 1.3em;
     }
 
-    .home .welcome .centeredContent button a:hover {
+    #home .welcome .centeredContent button a:hover {
         cursor: pointer;
     }
 
-    .home .welcome .centeredContent button a:focus {
+    #home .welcome .centeredContent button a:focus {
         outline: none;
     }
 
-    .home .welcome .mouse {
+    #home .welcome .mouse {
         display: block;
         width: 100%;
         text-align: center;
         position: absolute;
         bottom: 0;
+        cursor: pointer;
     }
 
-    .home .welcome .mouse p {
+    #home .welcome .mouse p {
         color: var(--lightGrey);
+        margin-top: 5px;
     }
 
-    .home .presentation {
+    #home .presentation {
         background-color: var(--blueGrey);
     }
 
-    .home .presentation article {
+    #home .presentation article {
         width: 70%;
-        min-width: 300px;
+        min-width: 250px;
         margin: 0 auto;
         padding: 20px;
     }
 
-    .home .presentation article span {
+    #home .presentation article span {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
     }
 
-    .home .presentation article span hr {
+    .halfLine {
         border: 0;
         height: 1px;
         background: var(--orange);
         margin: 0;
-        width: calc("50% -" var(--iconWidth));
+        width: calc(50% - (var(--iconWidth) / 1.5));
     }
 
-    .home .presentation .actions, .home .presentation .participate, .home .presentation .objectives {
+    .actions, .participate, .objectives {
         color: var(--darkGrey);
+        width: var(--articleHomeWidth);
+        margin: 0 auto;
+        min-width: 250px;
     }
 
-    .home .presentation h2 {
+    #home .presentation h2 {
         display: initial;
         width: inherit;
         font-weight: 500;
@@ -190,17 +225,39 @@
         border-bottom: 1px solid var(--orange);
     }
 
-    .home .presentation ul {
+    #home .presentation ul {
         list-style: circle;
         line-height: 1.2em;
+    }
+
+    .colorLink {
+        color: var(--orange);
+    }
+
+    .colorLink:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .arrowTopContainer {
+        width: var(--articleHomeWidth);
+        margin: 0 auto;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
     }
 
     footer {
         background-color: #000;
         height: 100px;
     }
-    footer p{
-        margin: 0;
+
+    footer p {
+        margin: 0 auto;
+        padding: 10px;
+        width: 250px;
+        text-align: center;
         color: var(--lightGrey);
     }
 </style>
