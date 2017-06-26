@@ -1,7 +1,15 @@
 <template>
-    <div>
+    <div class="simpleCard">
         <h1 class="elementListBoardTitle">{{card.name}}</h1>
-        <section>{{card.desc}}</section>
+        <section class="ideaSection">
+            <div class="description">
+                {{card.desc}}
+            </div>
+            <div class="rate">
+                <span class="addRate" @click="increment()">&#x2661</span>
+                <span class="counter">{{counter}}</span>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -9,12 +17,28 @@
     export default{
         props: [
               'card'
-        ]
+        ],
+        data(){
+            return{
+                counter: 0
+            }
+        },
+        methods:{
+            increment() {
+                this.counter +=1;
+            }
+        }
 
     }
 </script>
 
 <style scoped>
+    .simpleCard{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
     .workshopIdea .elementListBoardTitle{
         width: 80%;
         margin: 0 auto;
@@ -24,9 +48,48 @@
         font-size: 1.2em;
         border-bottom: 1px solid var(--orange);
     }
-    /*.workshopIdea .listBoard li.elementListBoard:hover h1{*/
-    /*color: var(--white);*/
-    /*border-bottom: 1px solid var(--white);*/
+    .ideaSection{
+        font-size: 1rem;
+        text-align: center ;
+        padding-top: 1rem;
+        height: 175px;
+        overflow: hidden;
+    }
+    .description{
+        color: var(--darkGrey);
+        flex: 1;
+    }
+    .elementListBoard .rate{
+        display: none;
+    }
+    .elementListBoard .rate .addRate{
+        font-size: 2rem;
+        color: var(--white);
+        display: block;
+        padding-top: 2px;
+        border: 1px solid var(--white);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .counter{
+        display: block;
+        margin-top: 0.3rem;
+    }
+    .elementListBoard:hover .elementListBoardTitle,
+    .elementListBoard:active .elementListBoardTitle{
+        color: var(--white);
+        border-bottom: 1px solid var(--white);
+    }
+    .elementListBoard:hover .rate,
+    .elementListBoard:active .rate{
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin-top: 1.5rem;
 
-    /*}*/
+     }
+    .elementListBoard:hover .description,
+    .elementListBoard:active .description{
+        display: none;
+    }
 </style>
