@@ -1,9 +1,9 @@
 <template>
     <div class="navigationContainer">
         <nav class="navigation">
-            <ul class="navigationList">
-                <li><router-link to="/app/workshopIdea">Idées d'ateliers</router-link></li>
+            <ul class="navigationList" @click="navigationHide()">
                 <li><router-link to="/app/scheduledWorkshops">Ateliés programmés</router-link></li>
+                <li><router-link to="/app/workshopIdea" >Idées d'ateliers</router-link></li>
                 <li><router-link to="/app/demosApi">API pour Démos</router-link></li>
                 <li><router-link to="/app/contact">Contact</router-link></li>
             </ul>
@@ -12,7 +12,19 @@
 </template>
 
 <script>
-    export default{}
+    export default{
+        data() {
+            return {
+                show: true
+            }
+        },
+
+        methods: {
+            navigationHide() {
+                this.$emit('navigate');
+            }
+        }
+    }
 
 </script>
 
@@ -21,6 +33,7 @@
     .navigation{
         background-color: var(--darkGrey);
         height: calc(100vh - var(--headerHeight));
+        min-height: 100%;
     }
     .navigationList {
         margin: 0;

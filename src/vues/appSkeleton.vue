@@ -4,10 +4,15 @@
             <h1>
                 <router-link to="/"><img src='../images/logo.png' alt="logo Hacking Mondays"/></router-link>
             </h1>
-            <button id="btnToogleMenu" @click="navigationDisplay()">button</button>
+            <div id="btnToogleMenu" @click="navigationDisplay()">
+                <hr>
+                <hr>
+                <hr>
+                <hr>
+            </div>
         </header>
         <div class="PrincipalContainer">
-            <navigation id="navigationDisplayId" v-show="show"></navigation>
+            <navigation id="navigationDisplayId" v-show="show" @navigate="navigationHide()"></navigation>
             <router-view id="contentId"></router-view>
         </div>
     </div>
@@ -22,7 +27,11 @@
 
         methods: {
             navigationDisplay() {
+                console.log("open")
                 this.show = !this.show
+            },
+            navigationHide() {
+                this.show = false
             }
         }
     }
@@ -42,7 +51,13 @@
         position: fixed;
         top: 1rem;
         left: 1rem;
-        background-color: #FFF;
+        width: 35px;
+    }
+    #btnToogleMenu hr{
+        border: 0;
+        height: 1px;
+        background: var(--blueGrey);
+        margin: 6px 0 6px;
     }
 
     header > h1 {
@@ -50,7 +65,7 @@
         left: 50%;
         top: 50%;
         width: 200px;
-        padding: 1vw 1.2vw;
+        padding: 1.5vw 1.2vw;
         margin-left: calc(200px / (-2));
         margin-top: calc(80px / (-2));
         display: block;
@@ -85,6 +100,7 @@
             margin: 0;
             top: 0;
             left: 0;
+            padding-top: 1vw;
         }
 
         header #btnToogleMenu {
