@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import {router} from './src/router.js'
+import {OAuth} from './src/service/OAuthService.js'
+
 import "./globale.css"
 
 /**
