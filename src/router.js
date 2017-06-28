@@ -4,6 +4,7 @@ Vue.use(VueRouter);
 
 import Home               from './vues/home.vue'
 import workshopIdea       from './vues/workshopIdea.vue'
+import projectIdea        from './vues/projectIdea.vue'
 import scheduledWorkshops from './vues/scheduledWorkshops.vue'
 import demosApi           from './vues/demosApi.vue'
 import Contact            from './vues/contact.vue'
@@ -15,6 +16,7 @@ const routes = [
     {path: '/app',  component:  app, children: [
         { path:'scheduledWorkshops', component: scheduledWorkshops},
         { path:'workshopIdea',       component: workshopIdea},
+        { path:'projectIdea',        component: projectIdea},
         { path:'demosApi',           component: demosApi},
         { path:'Contact',            component: Contact},
     ] },

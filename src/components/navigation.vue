@@ -4,6 +4,7 @@
             <ul class="navigationList" @click="navigationHide()">
                 <li><router-link to="/app/scheduledWorkshops">Ateliés programmés</router-link></li>
                 <li><router-link to="/app/workshopIdea" >Idées d'ateliers</router-link></li>
+                <li><router-link to="/app/projectIdea" >Idées de projet</router-link></li>
                 <li><router-link to="/app/demosApi">API pour Démos</router-link></li>
                 <li><router-link to="/app/contact">Contact</router-link></li>
             </ul>
