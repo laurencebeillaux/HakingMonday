@@ -1,6 +1,12 @@
 <template>
     <div class="scheduledWorkshopsContainer">
-        <simple-board :idList="idList" class="scheduledWorkshops" ></simple-board>
+        <simple-board :idList="idList" class="scheduledWorkshops" >
+            <template slot="card" scope="props">
+                <li class="elementListBoard">
+                    <Simple-card :card="props.card"></Simple-card>
+                </li>
+            </template>
+        </simple-board>
     </div>
 </template>
 

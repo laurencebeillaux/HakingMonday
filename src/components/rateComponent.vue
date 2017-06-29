@@ -37,33 +37,33 @@
 </script>
 
 <style>
-    .elementListBoard:hover .rate,
-    .elementListBoard:active .rate {
-        display: block;
-        width: 50px;
-        height: 50px;
-        margin-top: 1.5rem;
+    @import "../vues/variables/variables.css";
 
-    }
     .elementListBoard .rate {
         display: none;
         margin: 0 auto;
     }
-
     .elementListBoard .rate .addRate {
         font-size: 2rem;
         color: var(--white);
         display: block;
-        padding-top: 2px;
         border: 1px solid var(--white);
         border-radius: 50%;
         cursor: pointer;
+        height: 50px;
     }
     .elementListBoard .rate .counter{
         color: var(--white);
         font-size: 0.9rem;
         line-height: 1.7rem;
         display: block;
+    }
+    .elementListBoard:hover .rate,
+    .elementListBoard:active .rate {
+        display: block;
+        width: 50px;
+        margin-top: 1.5rem;
+
     }
 
 </style>

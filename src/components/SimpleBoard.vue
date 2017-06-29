@@ -64,8 +64,18 @@
         font-weight: 500;
         font-size: 1.2em;
     }
+    .listBoard .elementListBoard {
+        flex: 1;
+        background-color: var(--white);
+        margin: 0.5rem;
+        min-width: 230px;
+        min-height: 210px;
+        padding: 2rem 0.3rem 0.5rem;
+        text-align: center;
+        vertical-align: middle;
+    }
 
-    .workshopIdea .listBoard {
+     .listBoard {
         list-style: none;
         padding: 0;
         display: flex;
@@ -74,11 +84,8 @@
         align-items: center;
         flex-wrap: wrap;
     }
-
-    /*hover on workshopIdeo */
-
-    /*.workshopIdea .listBoard li.elementListBoard:hover{*/
-        /*background-color: var(--orange) ;*/
-
-    /*}*/
+    .listBoard .elementListBoard:hover,
+    .listBoard .elementListBoard:active{
+        background-color: var(--orange);
+    }
 </style>
