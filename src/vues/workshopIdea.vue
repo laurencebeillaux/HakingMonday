@@ -4,7 +4,11 @@
             <!-- scoped slot can be named too -->
             <template slot="card" scope="props">
                 <li class="elementListBoard">
-                    <SimpleCard :card="props.card"></SimpleCard>
+                    <Simple-card :card="props.card">
+                        <template slot="rate" scope="params">
+                            <rate-component :card="props.card"></rate-component>
+                        </template>
+                    </Simple-card>
                 </li>
             </template>
         </simple-board>
@@ -44,5 +48,6 @@
     .workshopIdea .listBoard .elementListBoard:active{
         background-color: var(--orange);
     }
+
 
 </style>

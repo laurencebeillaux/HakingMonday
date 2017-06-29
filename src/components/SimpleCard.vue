@@ -5,43 +5,19 @@
             <div class="description">
                 {{card.desc}}
             </div>
-            <div class="rate">
-                <span class="addRate" @click="increment()">&#x2661</span>
-                <span class="counter">{{counter}}</span>
-            </div>
+            <slot name="rate"
+                  :card="card">
+            </slot>
         </section>
     </div>
 </template>
 
 <script>
-    import {OAuth} from '../../src/service/OAuthService.js'
 
     export default{
         props: [
             'card'
-        ],
-        data(){
-            return {
-                counter: this.card.idMembersVoted.length,
-            }
-        },
-        methods: {
-            increment() {
-                OAuth().then((member)=> {
-                    let  membersVoted= this.card.idMembersVoted;
-                    let indexOfId = membersVoted.indexOf(member.id);
-                    if (indexOfId !== -1) {
-                        this.counter -= 1;
-                        membersVoted.splice(indexOfId, 1);
-                        Trello.delete('cards/'+this.card.id+'/membersVoted/'+member.id);
-                    } else {
-                        this.counter += 1;
-                        membersVoted.push(member.id);
-                        Trello.post('cards/'+this.card.id+'/membersVoted/?value='+member.id);
-                    }
-                })
-            }
-        }
+        ]
     }
 </script>
 
@@ -56,7 +32,7 @@
         border-bottom: 1px solid var(--orange);
     }
 
-    .ideaSection {
+    .workshopIdea .ideaSection {
         font-size: 1rem;
         text-align: center;
         padding-top: 1rem;
@@ -64,48 +40,23 @@
         overflow: hidden;
     }
 
-    .description {
+    .workshopIdea .description {
         color: var(--darkGrey);
         flex: 1;
     }
-
-    .elementListBoard .rate {
-        display: none;
-        margin: 0 auto;
-    }
-
-    .elementListBoard .rate .addRate {
-        font-size: 2rem;
-        color: var(--white);
-        display: block;
-        padding-top: 2px;
-        border: 1px solid var(--white);
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    .counter {
+    .workshopIdea .counter {
         display: block;
         margin-top: 0.3rem;
     }
 
-    .elementListBoard:hover .elementListBoardTitle,
-    .elementListBoard:active .elementListBoardTitle {
+    .workshopIdea .elementListBoard:hover .elementListBoardTitle,
+    .workshopIdea .elementListBoard:active .elementListBoardTitle {
         color: var(--white);
         border-bottom: 1px solid var(--white);
     }
 
-    .elementListBoard:hover .rate,
-    .elementListBoard:active .rate {
-        display: block;
-        width: 50px;
-        height: 50px;
-        margin-top: 1.5rem;
-
-    }
-
-    .elementListBoard:hover .description,
-    .elementListBoard:active .description {
+    .workshopIdea .elementListBoard:hover .description,
+    .workshopIdea .elementListBoard:active .description {
         display: none;
     }
 </style>
